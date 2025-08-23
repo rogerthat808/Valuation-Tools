@@ -1,0 +1,96 @@
+:root {
+  --bg: #f5f8fa;
+  --card: #ffffff;
+  --text: #040303;
+  --muted: #5f6368;
+  --accent: #6001d2;
+  --accent-600: #4a00a8;
+  --border: #e0e3e7;
+  --row-alt: #fafbfc;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --light-green-bg: #5f636863;
+  --light-green-border: #cce3d5;
+}
+[data-theme="dark"] {
+  --bg:#212e3e; --card:#121820; --text:#e6edf3; --muted:#9aa4af; --border:#1f2630; --row-alt:#0d1117;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+header{padding:14px 20px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.navright{display:flex;gap:10px;align-items:center}
+.toggle{border:1px solid var(--border);padding:8px 10px;border-radius:8px;background:var(--card);cursor:pointer}
+
+.wrap{max-width:1300px;margin:0 auto;padding:20px;display:grid;gap:20px;grid-template-columns:430px 1fr}
+.stack{display:grid;gap:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:0 1px 2px rgba(16,24,40,.06)}
+.card h2{margin:0;padding:14px 16px 0;font-size:16px;font-weight:800}
+.card .body{padding:12px 16px 16px}
+
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:600}
+input,select,textarea{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:#dfe2ed;color:var(--text);outline:none;font-size:14px}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(96,1,210,.15)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+button{cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 14px;border-radius:8px;font-weight:800}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.primary:hover{background:var(--accent-600)}
+button.ghost:hover{border-color:#c9ced6}
+button:disabled{opacity:.6;cursor:not-allowed}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{text-align:right;padding:10px 12px;border-bottom:1px solid var(--border);background:#fcfdff}
+[data-theme="dark"] thead th{background:#0f141a}
+thead th:first-child,tbody td:first-child{text-align:left}
+tbody td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--border)}
+tbody tr:nth-child(even){background:var(--row-alt)}
+
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--border);border-radius:999px}
+.muted{color:var(--muted);font-size:12px}
+.mono{font-family:var(--mono)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.kv .val{font-weight:800}
+.hint{margin-top:6px;font-size:11px;color:var(--muted)}
+.highlight-box{background:var(--light-green-bg);border:1px solid var(--light-green-border);border-radius:10px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:24px 0 40px}
+
+/* ===== Ticker Tape ===== */
+.ticker-tape{
+  position: sticky; top: 0; z-index: 50;
+  width: 100%; overflow: hidden;
+  background: var(--card, #fff);
+  border-bottom: 1px solid var(--border,#e5e7eb);
+}
+
+.ticker-track{
+  display: inline-flex; gap: 10px;
+  white-space: nowrap;
+  padding: 6px 10px;
+  animation: tt-scroll 30s linear infinite;
+}
+
+@keyframes tt-scroll{
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tt-pill{
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--border,#e5e7eb);
+  background: var(--surface,#f9fafb);
+  font-size: 12px; line-height: 1;
+}
+
+.tt-up  { color: #0a7d25; border-color: #b7e2c1; background: #eef9f1; }
+.tt-down{ color: #b00020; border-color: #f3b1b8; background: #fff0f2; }
+
+.tt-sym{ font-weight: 700; letter-spacing: .3px; }
+.tt-price{ color: var(--text,#111827); }
+.tt-chg{ font-variant-numeric: tabular-nums; }
+
+.ticker-error{
+  padding: 6px 12px; color: #b00020; font-size: 12px;
+  border-top: 1px dashed var(--border,#e5e7eb);
+}
